@@ -88,8 +88,24 @@ function nth(list, number, counter = 0){
     return nth(list.rest, number, counter + 1);
 }
 
+//EXERCISE 4
 
+function deepEqual(object1, object2){
+    let keys = Object.keys(object1);
 
+    for(let i = 0, n = keys.length; i < n; i++){
+        if((typeof object1[keys[i]] === "object") && (typeof object2[keys[i]] === "object")){
+            return deepEqual(object1[keys[i]], object2[keys[i]]);
+        }
+
+        if(object1[keys[i]] !== object2[keys[i]]){
+            return false;
+        }
+    }
+
+    return true;
+
+}
 
 
 
