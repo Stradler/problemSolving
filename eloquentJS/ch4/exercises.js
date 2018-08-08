@@ -39,11 +39,54 @@ function reverseArrayInPlace(arr){
 }
 
 
+//EXERCISE 3
 
+function arrayToList(arr){
+    // debugger;
+    let object = {};
+    let cursor = object;
 
+    for (let i = 0, n = arr.length; i < n; i++){
+        cursor.value = arr[i];
+        cursor.rest = (i === n - 1) ? null: {};
+        cursor = cursor.rest;
+    }
 
+    return object;
+}
 
+function listToArray(list){
 
+    let cursor = list;
+    const array = [];
+
+    while(cursor !== null){
+        array.push(cursor.value);
+        cursor = cursor.rest;
+    }
+
+    return array;
+
+}
+
+function prepend(element, list){
+    return {
+      value: element,
+      rest: list
+    }
+}
+
+function nth(list, number, counter = 0){
+    if(number === counter){
+        return list.value;
+    }
+
+    if(list.rest === null){
+        return undefined;
+    }
+
+    return nth(list.rest, number, counter + 1);
+}
 
 
 
