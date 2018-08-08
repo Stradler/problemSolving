@@ -1,5 +1,6 @@
-function range(start, end, step = 1, arr = []){
+//EXERCISE 1
 
+function range(start, end, step = 1, arr = []){
   let under = (start < end) && (step < 0);
   let over = (start > end) && (step > 0);
 
@@ -12,11 +13,10 @@ function range(start, end, step = 1, arr = []){
   return range(start + step, end, step, arr);
 }
 
-function sum(arr){
+function sum(arr, acc = 0, index = 0){
+  if (index === arr.length - 1){
+      return acc + arr[index];
+  }
 
-  return acc;
+  return acc + sum(arr, arr[index], index + 1);
 }
-
-let arr = range(5, 6, 2);
-
-console.log(arr);
